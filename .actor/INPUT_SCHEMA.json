@@ -8,27 +8,30 @@
       "type": "string",
       "description": "The base domain of the competitor's Shopify store (e.g., https://competitor-sneakers.com).",
       "editor": "textfield",
-      "prefill": "https://competitor-store.myshopify.com"
+      "prefill": "https://allbirds.com"
     },
     "shopifyStoreDomain": {
       "title": "Your Shopify Store Domain",
       "type": "string",
       "description": "Your internal Shopify domain (e.g. your-store.myshopify.com).",
-      "editor": "textfield"
+      "editor": "textfield",
+      "prefill": "demo-store.myshopify.com"
     },
     "shopifyAdminAccessToken": {
       "title": "Your Shopify Admin Access Token",
       "type": "string",
       "description": "Shopify Admin API token (starts with shpat_). Required to write back prices.",
       "editor": "textfield",
-      "isSecret": true
+      "isSecret": true,
+      "prefill": "shpat_demo_mock_token"
     },
     "openaiApiKey": {
       "title": "OpenAI API Key (BYOK)",
       "type": "string",
       "description": "Your OpenAI API Key. Used to run semantic variant mapping between catalogs.",
       "editor": "textfield",
-      "isSecret": true
+      "isSecret": true,
+      "prefill": "MOCK_KEY_FOR_TESTING"
     },
     "undercutPercentage": {
       "title": "Undercut Percentage",

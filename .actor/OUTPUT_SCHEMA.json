@@ -1,0 +1,14 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Shopify Repricer Output",
+  "description": "Calculated competitor product matches, undercut pricing rules calculations, and Shopify inventory price sync statuses.",
+  "type": "object",
+  "properties": {
+    "pricingReport": {
+      "type": "string",
+      "title": "Pricing Adjustments Report",
+      "description": "The dataset containing all variant price updates.",
+      "editor": "dataset"
+    }
+  }
+}

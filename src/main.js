@@ -71,18 +71,35 @@ async function main() {
         console.log(`Successfully scraped ${competitorProducts.length} competitor products.`);
 
         // 4. Retrieve User's Shopify Catalog
-        console.log('\nFetching user Shopify catalog...');
-        const userProductsUrl = `https://${shopifyStoreDomain}/admin/api/2024-04/products.json?limit=250`;
-        const userResponse = await axios.get(userProductsUrl, {
-            headers: {
-                'X-Shopify-Access-Token': shopifyAdminAccessToken,
-                'Content-Type': 'application/json'
-            }
-        });
+        let userProducts = [];
+        const isDemoMode = shopifyAdminAccessToken.toLowerCase().includes('demo') || shopifyAdminAccessToken.toLowerCase().includes('mock');
 
-        const userProducts = userResponse.data.products;
-        if (!userProducts || !Array.isArray(userProducts)) {
-            throw new Error('Invalid user Shopify catalog response.');
+        if (isDemoMode) {
+            console.log('\n[DEMO MODE] Detected demo credentials. Emulating user store products from competitor catalog...');
+            // Generate user products slightly higher priced than competitor to demonstrate pricing cuts
+            userProducts = competitorProducts.slice(0, 3).map((cp, idx) => ({
+                id: 9000 + idx,
+                title: cp.title,
+                variants: cp.variants.map((cv, vidx) => ({
+                    id: 90000 + idx * 10 + vidx,
+                    title: cv.title,
+                    sku: `DEMO-SKU-${idx}-${vidx}`,
+                    price: (parseFloat(cv.price) * 1.15).toFixed(2) // 15% more expensive
+                }))
+            }));
+        } else {
+            console.log('\nFetching user Shopify catalog...');
+            const userProductsUrl = `https://${shopifyStoreDomain}/admin/api/2024-04/products.json?limit=250`;
+            const userResponse = await axios.get(userProductsUrl, {
+                headers: {
+                    'X-Shopify-Access-Token': shopifyAdminAccessToken,
+                    'Content-Type': 'application/json'
+                }
+            });
+            userProducts = userResponse.data.products;
+            if (!userProducts || !Array.isArray(userProducts)) {
+                throw new Error('Invalid user Shopify catalog response.');
+            }
         }
         console.log(`Successfully retrieved ${userProducts.length} user products.`);
 
