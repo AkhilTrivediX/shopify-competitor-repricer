@@ -1,0 +1,78 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "variantId": {
+        "type": "integer",
+        "title": "Shopify Variant ID"
+      },
+      "title": {
+        "type": "string",
+        "title": "Product Title"
+      },
+      "sku": {
+        "type": "string",
+        "title": "Product SKU"
+      },
+      "oldPrice": {
+        "type": "number",
+        "title": "Original Price"
+      },
+      "competitorPrice": {
+        "type": "number",
+        "title": "Competitor Price"
+      },
+      "newPrice": {
+        "type": "number",
+        "title": "New Calculated Price"
+      },
+      "status": {
+        "type": "string",
+        "title": "Repricing Status"
+      }
+    }
+  },
+  "views": {
+    "overview": {
+      "title": "Overview",
+      "transformation": {
+        "fields": [
+          "sku",
+          "title",
+          "oldPrice",
+          "competitorPrice",
+          "newPrice",
+          "status"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "sku": {
+            "label": "SKU"
+          },
+          "title": {
+            "label": "Product Title"
+          },
+          "oldPrice": {
+            "label": "Original Price ($)",
+            "format": "number"
+          },
+          "competitorPrice": {
+            "label": "Competitor Price ($)",
+            "format": "number"
+          },
+          "newPrice": {
+            "label": "New Price ($)",
+            "format": "number"
+          },
+          "status": {
+            "label": "Sync Status"
+          }
+        }
+      }
+    }
+  }
+}
