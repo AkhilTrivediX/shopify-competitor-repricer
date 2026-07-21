@@ -1,0 +1,59 @@
+{
+  "title": "Shopify Competitor Repricer Configuration",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "competitorUrl": {
+      "title": "Competitor Store URL",
+      "type": "string",
+      "description": "The base domain of the competitor's Shopify store (e.g., https://competitor-sneakers.com).",
+      "editor": "textfield",
+      "prefill": "https://competitor-store.myshopify.com"
+    },
+    "shopifyStoreDomain": {
+      "title": "Your Shopify Store Domain",
+      "type": "string",
+      "description": "Your internal Shopify domain (e.g. your-store.myshopify.com).",
+      "editor": "textfield"
+    },
+    "shopifyAdminAccessToken": {
+      "title": "Your Shopify Admin Access Token",
+      "type": "string",
+      "description": "Shopify Admin API token (starts with shpat_). Required to write back prices.",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "openaiApiKey": {
+      "title": "OpenAI API Key (BYOK)",
+      "type": "string",
+      "description": "Your OpenAI API Key. Used to run semantic variant mapping between catalogs.",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "undercutPercentage": {
+      "title": "Undercut Percentage",
+      "type": "number",
+      "description": "The percentage to price under the competitor's price (e.g. 2.0 to be 2% cheaper). Use 0.0 to match price.",
+      "default": 2.0,
+      "minimum": 0
+    },
+    "maxDiscountPercentage": {
+      "title": "Maximum Discount Limit",
+      "type": "number",
+      "description": "The maximum discount percentage allowed off your original price to prevent margin loss.",
+      "default": 15.0,
+      "minimum": 0
+    },
+    "dryRun": {
+      "title": "Dry Run Mode",
+      "type": "boolean",
+      "description": "If enabled, the actor will calculate prices and save the report, but will NOT update Shopify.",
+      "default": true
+    }
+  },
+  "required": [
+    "competitorUrl",
+    "shopifyStoreDomain",
+    "shopifyAdminAccessToken"
+  ]
+}

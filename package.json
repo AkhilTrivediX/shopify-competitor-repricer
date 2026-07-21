@@ -1,0 +1,19 @@
+{
+  "name": "shopify-competitor-repricer",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A closed-loop Apify Actor to scrape Shopify competitor prices, semantically match products using OpenAI, and write optimized prices back to your Shopify store via API.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "node scratch/verify.js"
+  },
+  "dependencies": {
+    "apify": "^3.1.10",
+    "crawlee": "^3.5.8",
+    "axios": "^1.6.2",
+    "openai": "^4.24.1"
+  },
+  "author": "Antigravity Agent",
+  "license": "ISC"
+}

@@ -1,0 +1,5 @@
+node_modules/
+apify_storage/
+scratch/
+.DS_Store
+*.log

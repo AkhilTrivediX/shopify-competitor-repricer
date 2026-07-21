@@ -1,0 +1,8 @@
+{
+  "actorSpecification": 1,
+  "name": "shopify-competitor-repricer",
+  "title": "Shopify Competitor Repricer",
+  "version": "1.0",
+  "dockerfile": "./Dockerfile",
+  "input": "./INPUT_SCHEMA.json"
+}
